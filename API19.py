@@ -1,12 +1,12 @@
-    import smtplib
-    import time
-    import os
-    import sys
-    import socket
-    import requests
-    from datetime import datetime
-    from email.mime.text import MIMEText
-    from email.mime.multipart import MIMEMultipart
+import smtplib
+import time
+import os
+import sys
+import socket
+import requests
+from datetime import datetime
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
 
     den = "\033[1;30m"
     xanhla = "\033[1;92m"
