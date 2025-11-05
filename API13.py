@@ -232,7 +232,10 @@ def main():
     if not video_url.startswith("http"):
         print("Link không hợp lệ. Thoát...")
         return
+
+    automator = None  
     print(" Vui lòng hoàn thành CAPTCHA thủ công và nhấn Enter để tiếp tục...")
+
     try:
         automator = ZefoyAutomator(video_url)
         automator.run()
@@ -240,9 +243,12 @@ def main():
         print(f"Lỗi tự động: {e}")
     except KeyboardInterrupt:
         print("Dừng bởi người dùng.")
+    except Exception as e:
+        print(f"Lỗi không xác định: {e}")
     finally:
-        automator.driver.quit()
-        print("Đã đóng trình duyệt. Kết thúc!")
+        if automator and automator.driver:  
+            automator.driver.quit()
+            print("Đã đóng trình duyệt. Kết thúc!")
 
 
 if __name__ == "__main__":
