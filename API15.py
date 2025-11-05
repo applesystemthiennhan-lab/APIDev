@@ -87,7 +87,7 @@ BANNER = f"""{lamd}
 {lamd}╚═════════════════════════════════════════════════════════════════{reset}
 """
 
-API_URL = "https://keyherlyswar.x10.mx/Apidocs/reglq.php"
+API_URL = "https://raw.githubusercontent.com/applesystemthiennhan-lab/APIDev/refs/heads/main/REGACCGarena.php"
 TIMEOUT = 15
 DELAY_BETWEEN = 30
 MAX_RETRIES = 3
