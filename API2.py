@@ -6,9 +6,85 @@ import json
 import random
 import platform
 import re
-from datetime import datetime, timedelta
-from time import sleep
+import math
+import uuid
+import base64
+import socket
+import hashlib
+import threading
 import ast
+
+import requests
+from bs4 import BeautifulSoup
+from datetime import datetime, date, timedelta
+from time import sleep, strftime
+from urllib.parse import urlencode
+from urllib3.exceptions import InsecureRequestWarning
+from http import cookiejar
+from pathlib import Path
+from pystyle import Write, Colors
+
+now = datetime.now()
+time_str = now.strftime("%H:%M:%S")
+today = date.today()
+thu = now.strftime("%A")
+ngay_hom_nay = now.strftime("%d")
+thang_nay = now.strftime("%m")
+nam_ = now.strftime("%Y")
+
+def get_ip_from_url(url):
+    response = requests.get(url)
+    ip_address = socket.gethostbyname(response.text.strip())
+    return ip_address
+
+url_check = "http://kiemtraip.com/raw.php"
+ip = get_ip_from_url(url_check)
+data_machine = []
+
+den = "\033[1;30m"
+do = "\033[1;31m"
+luc = "\033[1;32m"
+vang = "\033[1;33m"
+xanhd = "\033[1;34m"
+hong = "\033[1;35m"
+xnhac = "\033[1;36m"
+trang = "\033[1;37m"
+whiteb = "\033[1;37m"
+red = "\033[0;31m"
+redb = "\033[1;31m"
+end = '\033[0m'
+xanhla = "\033[1;92m"
+do_nhat = "\033[1;91m"
+vang_nhat = "\033[1;93m"
+xanhduong_sang = "\033[1;94m"
+hong_nhat = "\033[1;95m"
+trang_sang = "\033[1;97m"
+reset = "\033[0m"
+
+XNHAC = "\033[38;5;117m"
+XANH_DUONG = XNHAC
+TRANG_SANG = "\033[97m"
+LUC = "\033[92m"
+VANG = "\033[93m"
+VANG_NHAT = "\033[33m"
+DO_NHAT = "\033[91m"
+XANH_LA = "\033[96m"
+MAGENTA = "\033[95m"
+RESET = "\033[0m"
+
+ENC_COLORS = {
+    "ASCII/UTF-8": "\033[96m",
+    "UTF-16LE": "\033[93m",
+    "GAPPED": "\033[95m",
+}
+
+kt_code = "</>"
+edit = vang + "]" + trang + "[" + do + "[⟨⟩]" + trang + "]" + vang + "[" + trang + " ➩ " + luc
+edit1 = trang + "[" + do + "[⟨⟩]" + trang + "]" + trang + " ➩ " + luc
+
+os.system("cls" if os.name == "nt" else "clear")
+sleep(1)
+
 
 # Danh sách module cần cài
 required_modules = {
@@ -88,20 +164,21 @@ def changetoken(red, green, white):
 
 def banner(red, green, blue, yellow, cyan, pink):
     text = f'''
-\033[1;34m╔═════════════════════════════════════════════════════════════════           
- ██████╗██████╗ ███████╗    ████████╗ ██████╗  ██████╗ ██╗     
-██╔════╝╚════██╗██╔════╝    ╚══██╔══╝██╔═══██╗██╔═══██╗██║     
-██║      █████╔╝███████╗       ██║   ██║   ██║██║   ██║██║     
-██║     ██╔═══╝ ╚════██║       ██║   ██║   ██║██║   ██║██║     
-╚██████╗███████╗███████║       ██║   ╚██████╔╝╚██████╔╝███████╗
- ╚═════╝╚══════╝╚══════╝       ╚═╝    ╚═════╝  ╚═════╝ ╚══════╝
-\033[1;34m╠═════════════════════════════════════════════════════════════════
-\033[1;32m║➢ Author   :    Vũ Văn Chiến                                   
-\033[1;36m║➢ Youtube  :   https://www.youtube.com/@c25tool                  
-\033[1;31m║➣ Nhóm Zalo  : https://zalo.me/g/apmxom704                
-\033[1;33m║➣ Shop   : c25tool.net                  
-\033[1;34m╚═════════════════════════════════════════════════════════════════
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━'''
+\033[1;34m╔═════════════════════════════════════════════════════════════════╗
+\033[1;32m║  █████╗ ██████╗ ██╗██████╗ ███████╗██╗   ██╗                   ║
+\033[1;35m║ ██╔══██╗██╔══██╗██║██╔══██╗██╔════╝╚██╗ ██╔╝                   ║
+\033[1;31m║ ███████║██████╔╝██║██║  ██║█████╗   ╚████╔╝                    ║
+\033[1;33m║ ██╔══██║██╔═══╝ ██║██║  ██║██╔══╝    ╚██╔╝                     ║
+\033[1;34m║ ██║  ██║██║     ██║██████╔╝███████╗   ██║                      ║
+\033[1;37m║ ╚═╝  ╚═╝╚═╝     ╚═╝╚═════╝ ╚══════╝   ╚═╝                      ║
+\033[1;34m╠═════════════════════════════════════════════════════════════════╣
+\033[1;32m║➢ Author   : APIDev Tool                                          ║
+\033[1;36m║➢ Youtube  : https://youtube.com/@APIDev-ThienNhan                     ║
+\033[1;31m║➣ Nhóm Zalo: https://zalo.me/g/pxwhiq299                          ║
+\033[1;33m║➣ Website  : https://devthiennhan.bio.link                     ║
+\033[1;35m║➣ IP Hiện Tại: {vang}{ip:<43}{trang}║
+\033[1;36m║➣ Ngày: {do}{ngay_hom_nay}{vang} | {luc}Tháng: {do}{thang_nay}{vang} | {luc}Năm: {do}{nam_}{vang}{" " * 17}║
+\033[1;34m╚═════════════════════════════════════════════════════════════════╝'''
 
     pr3(text)
     text = f'''{red}            ┌───────────────────────┐ 
@@ -114,6 +191,9 @@ def banner(red, green, blue, yellow, cyan, pink):
  ~[+]{pink}MÀ DO HỆ THỐNG GOLIKE CHƯA LOAD!!!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━'''
     pr3(text)
+
+
+print(banner)
 
 
 def bes4(url):
