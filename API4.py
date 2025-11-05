@@ -39,27 +39,27 @@ def Delay(value):
     while not (value <= 1):
         value -= 0.123
         print(
-            f'''{trang}[{lam}C25{trang}] [{lam}DELAY{trang}] [{lam}{str(value)[0:5]}{trang}] [{vang}X    {trang}]''',
+            f'''{trang}[{lam}API{trang}] [{lam}DELAY{trang}] [{lam}{str(value)[0:5]}{trang}] [{vang}X    {trang}]''',
             '               ',
             end='\r')
         sleep(0.02)
         print(
-            f'''{trang}[{lam}C25{trang}] [{lam}DELAY{trang}] [{lam}{str(value)[0:5]}{trang}] [ {vang}X   {trang}]''',
+            f'''{trang}[{lam}API{trang}] [{lam}DELAY{trang}] [{lam}{str(value)[0:5]}{trang}] [ {vang}X   {trang}]''',
             '               ',
             end='\r')
         sleep(0.02)
         print(
-            f'''{trang}[{lam}C25{trang}] [{lam}DELAY{trang}] [{lam}{str(value)[0:5]}{trang}] [  {vang}X  {trang}]''',
+            f'''{trang}[{lam}API{trang}] [{lam}DELAY{trang}] [{lam}{str(value)[0:5]}{trang}] [  {vang}X  {trang}]''',
             '               ',
             end='\r')
         sleep(0.02)
         print(
-            f'''{trang}[{lam}C25{trang}] [{lam}DELAY{trang}] [{lam}{str(value)[0:5]}{trang}] [   {vang}X {trang}]''',
+            f'''{trang}[{lam}API{trang}] [{lam}DELAY{trang}] [{lam}{str(value)[0:5]}{trang}] [   {vang}X {trang}]''',
             '               ',
             end='\r')
         sleep(0.02)
         print(
-            f'''{trang}[{lam}C25{trang}] [{lam}DELAY{trang}] [{lam}{str(value)[0:5]}{trang}] [    {vang}X{trang}]''',
+            f'''{trang}[{lam}API{trang}] [{lam}DELAY{trang}] [{lam}{str(value)[0:5]}{trang}] [    {vang}X{trang}]''',
             '               ',
             end='\r')
         sleep(0.02)
