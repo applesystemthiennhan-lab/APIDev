@@ -11,7 +11,7 @@ from pystyle import Colorate, Colors, Write, Add, Center
 
 __ZALO__ = 'https://zalo.me/g/pxwhiq299'
 __ADMIN__ = 'APi'
-__SHOP__ = 'vuvanchien.xyz'
+__SHOP__ = 'devthiennhan'
 __VERSION__ = '1.0'
 __NHV__ = '\033[1;91m[\033[1;92m●\033[1;91m]\033[1;97m ➻❥'
 
