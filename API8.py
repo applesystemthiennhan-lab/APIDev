@@ -11,7 +11,7 @@ import requests
 import os
 
 
-class C25:
+class APIDev:
 
     @staticmethod
     def CheckCookie(cookie, userid):
@@ -59,10 +59,10 @@ print(
 )
 
 user = input(
-    '\033[1;31m[\033[1;37mC25\033[1;31m] \033[1;37m=> \033[1m\033[38;5;51mNhập Tài Khoản :  '
+    '\033[1;31m[\033[1;37mAPIDev\033[1;31m] \033[1;37m=> \033[1m\033[38;5;51mNhập Tài Khoản :  '
 )
 password = input(
-    '\033[1;31m[\033[1;37mC25\033[1;31m] \033[1;37m=> \033[1m\033[38;5;51mNhập Mật Khẩu :  '
+    '\033[1;31m[\033[1;37mAPIDev\033[1;31m] \033[1;37m=> \033[1m\033[38;5;51mNhập Mật Khẩu :  '
 )
 
 browser = mechanize.Browser()
