@@ -2439,7 +2439,7 @@ def main():
         print(f"{do}Lựa chọn không hợp lệ.{xanh_cyan_dam}")
         return
 
-    print(f"\n{xanh_la}=== BẮT ĐẦU GỬI ==={xanh_cyan_dam}")
+    print(f"\n{xanh_la}APISpamWarMes Đang Chạy{xanh_cyan_dam}")
     threads = []
     for messenger in messengers:
         t = threading.Thread(target=send_messages_thread,
