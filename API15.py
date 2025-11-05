@@ -68,7 +68,7 @@ ENC_COLORS = {
     "GAPPED": "\033[95m",        
 }
 
-thanh_dep = trang + "~" + do + "[" + luc + "C25" + do + "] " + trang + "➩ " + luc
+thanh_dep = trang + "~" + do + "[" + luc + "APIDev" + do + "] " + trang + "➩ " + luc
 
 BANNER = f"""{lamd}
 ╔═════════════════════════════════════════════════════════════════
