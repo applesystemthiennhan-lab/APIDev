@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Key Hôm Nay</title>
+  <style>
+    /* 🌄 Nền toàn trang */
+    body {
+      font-family: "Poppins", sans-serif;
+      background-image: url('https://sf-static.upanhlaylink.com/img/image_2025110723b2d46448be6daf09c4e44fc0da91ee.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      color: #222;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    /* 🌙 Chế độ tối */
+    body.dark {
+      color: #eee;
+      background-color: #111;
+    }
+
+    /* ⚙️ Container chính */
+    .container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 320px;
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 20px;
+      padding: 24px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+      text-align: center;
+      backdrop-filter: blur(6px);
+      transition: background 0.3s ease;
+    }
+
+    body.dark .container {
+      background: rgba(0, 0, 0, 0.6);
+    }
+
+    h1 {
+      font-size: 22px;
+      margin-bottom: 12px;
+      color: #03fcec;
+    }
+
+    input, button {
+      width: 100%;
+      margin: 8px 0;
+      padding: 10px;
+      font-size: 15px;
+      border: none;
+      border-radius: 10px;
+      outline: none;
+    }
+
+    input {
+      background: rgba(255, 255, 255, 0.9);
+      text-align: center;
+    }
+
+    body.dark input {
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+    }
+
+    button {
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.3s;
+      background: #4a90e2;
+      color: #fff;
+    }
+
+    button:hover {
+      background: #3d7bc4;
+      transform: scale(1.03);
+    }
+
+    /* 🌗 Nút đổi sáng/tối mini góc phải */
+    .theme-toggle {
+      position: fixed;
+      top: 14px;
+      right: 14px;
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+      transition: 0.3s;
+      backdrop-filter: blur(6px);
+    }
+
+    .theme-toggle:hover {
+      transform: scale(1.08);
+    }
+
+    body.dark .theme-toggle {
+      background: rgba(0, 0, 0, 0.6);
+    }
+
+    .theme-toggle span {
+      font-size: 20px;
+    }
+
+    .footer {
+      margin-top: 20px;
+      font-size: 13px;
+      color: #555;
+    }
+
+    body.dark .footer {
+      color: #ccc;
+    }
+  </style>
+</head>
+<body>
+  <!-- 🌗 Nút đổi giao diện -->
+  <div class="theme-toggle" onclick="toggleTheme()">
+    <span id="themeIcon">🌞</span>
+  </div>
+
+  <div class="container">
+    <h1>˚₊· ͟͟͞͞➳❥ 𝐀𝐏𝐈𝐊𝐞𝐲𝐒𝐞𝐯𝐞𝐫 - 𝐀𝐏𝐈𝐊𝐞𝐲 𝐃𝐚𝐲</h1>
+    <input type="text" id="keyInput" value="Đang tải key..." readonly />
+    <button onclick="copyKey()">˚₊· ͟͟͞͞➳❥ 𝐀𝐏𝐈𝐊𝐞𝐲𝐒𝐞𝐯𝐞𝐫 - 𝐂𝐨𝐩𝐲</button>
+
+    <div style="margin-top: 10px;">
+      <div id="dateDisplay"></div>
+      <div id="clockDisplay" style="margin-top:4px;"></div>
+    </div>
+
+    <div class="footer">
+      © 𝐂𝐨𝐩𝐲𝐫𝐢𝐠𝐡𝐭 <𝐛>𝐀𝐏𝐈𝐃𝐞𝐯𝐒𝐞𝐯𝐞𝐫𝐊𝐞𝐲𝐈𝐎𝐒 𝟐𝟎𝟐𝟓</b>
+    </div>
+  </div>
+
+  <script>
+    function updateTime() {
+      const now = new Date();
+      const h = String(now.getHours()).padStart(2, '0');
+      const m = String(now.getMinutes()).padStart(2, '0');
+      const s = String(now.getSeconds()).padStart(2, '0');
+      const d = now.getDate();
+      const mo = now.getMonth() + 1;
+      const y = now.getFullYear();
+
+      document.getElementById("clockDisplay").textContent = `𝐀𝐏𝐈𝐊𝐞𝐲 𝐓𝐢𝐦𝐞 ${h}:${m}:${s}`;
+      document.getElementById("dateDisplay").textContent = `𝐀𝐏𝐈𝐊𝐞𝐲 𝐃𝐚𝐲 ${d}/${mo}/${y}`;
+
+      setTimeout(updateTime, 1000);
+    }
+
+    function copyKey() {
+      const input = document.getElementById('keyInput');
+      input.select();
+      document.execCommand('copy');
+      alert("˚₊· ͟͟͞͞➳❥ 𝐀𝐏𝐈𝐊𝐞𝐲𝐒𝐞𝐯𝐞𝐫!");
+    }
+
+    function toggleTheme() {
+      document.body.classList.toggle('dark');
+      document.getElementById('themeIcon').textContent =
+        document.body.classList.contains('dark') ? '🌙' : '🌞';
+    }
+
+    function getKeyFromURL() {
+      const params = new URLSearchParams(window.location.search);
+      const key = params.get('ma');
+      document.getElementById('keyInput').value = key ? key : "Không có key!";
+    }
+
+    window.onload = () => {
+      getKeyFromURL();
+      updateTime();
+    };
+  </script>
+</body>
+</html>
