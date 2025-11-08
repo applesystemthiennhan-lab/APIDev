@@ -137,6 +137,6 @@ while True:
         main_share()
     except KeyboardInterrupt:
         print(
-            '\n\033[38;5;245m[\033[38;5;9m!\033[38;5;245m] \033[38;5;9mNhớ Đăng Ký Kênh C25 Tool Nhé^^\033[0m'
+            '\n\033[38;5;245m[\033[38;5;9m!\033[38;5;245m] \033[38;5;9mNhớ Đăng Ký Kênh APIDevThienNhan Nhé^^\033[0m'
         )
         sys.exit()
