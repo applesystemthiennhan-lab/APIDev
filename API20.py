@@ -1,3 +1,5 @@
+import os 
+
 try:
     os.chdir("GayBotNhan")
     os.system("python3 Api.py")
