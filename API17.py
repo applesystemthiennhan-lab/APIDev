@@ -5,14 +5,52 @@ import threading
 from pathlib import Path
 
 # ====== Màu sắc ======
-xanhduong_sang = "\033[1;34m"
-trang_sang = "\033[1;37m"
-do_nhat = "\033[1;91m"
-xanhla = "\033[1;92m"
-vang = "\033[1;33m"
+den = "\033[1;30m"
+do = "\033[1;31m"
 luc = "\033[1;32m"
+vang = "\033[1;33m"
+xanhd = "\033[1;34m"
+hong = "\033[1;35m"
 xnhac = "\033[1;36m"
+trang = "\033[1;37m"
+whiteb = "\033[1;37m"
+red = "\033[0;31m"
+redb = "\033[1;31m"
+end = '\033[0m'
+xanhla = "\033[1;92m"
+do_nhat = "\033[1;91m"
+vang_nhat = "\033[1;93m"
+xanhduong_sang = "\033[1;94m"
+hong_nhat = "\033[1;95m"
+trang_sang = "\033[1;97m"
+den = "\033[1;90m"
+luc = "\033[1;32m"
+trang = "\033[1;37m"
+red = "\033[1;31m"
+vang = "\033[1;33m"
+tim = "\033[1;35m"
+lamd = "\033[1;34m"
+lam = "\033[1;36m"
+purple = "\033[35m"  
+hong = "\033[1;95m"
 reset = "\033[0m"
+
+XNHAC = "\033[38;5;117m"
+XANH_DUONG = XNHAC
+TRANG_SANG = "\033[97m"
+LUC = "\033[92m"
+VANG = "\033[93m"
+VANG_NHAT = "\033[33m"
+DO_NHAT = "\033[91m"
+XANH_LA = "\033[96m"
+MAGENTA = "\033[95m"
+RESET = "\033[0m"
+
+ENC_COLORS = {
+    "ASCII/UTF-8": "\033[96m",
+    "UTF-16LE": "\033[93m",
+    "GAPPED": "\033[95m",
+}
 
 
 def APIScanHTM5():
