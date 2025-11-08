@@ -1,3 +1,21 @@
+import os
+import re
+import time
+import threading
+from pathlib import Path
+
+# ====== Màu sắc ======
+xanhduong_sang = "\033[1;34m"
+trang_sang = "\033[1;37m"
+do_nhat = "\033[1;91m"
+xanhla = "\033[1;92m"
+vang = "\033[1;33m"
+luc = "\033[1;32m"
+xnhac = "\033[1;36m"
+reset = "\033[0m"
+
+
+def APIScanHTM5():
     HTML_PATTERNS = [r'<!doctype', r'<html', r'<head', r'<body', r'<script', r'<div', r'<link', r'<meta']
     HTML_RE = re.compile('|'.join(HTML_PATTERNS), re.IGNORECASE)
     MIN_PRINTABLE_RUN = 4
@@ -24,7 +42,7 @@
         return
 
     file_size = p.stat().st_size
-    print(f"\n{vang_nhat}APIScanHTM5 :{reset} {trang_sang}Đang chuẩn bị quét — kích thước: {file_size:,} bytes{reset}")
+    print(f"\n{vang}APIScanHTM5 :{reset} {trang_sang}Đang chuẩn bị quét — kích thước: {file_size:,} bytes{reset}")
 
     # ====== Trạng thái ======
     bytes_scanned = 0
@@ -35,7 +53,7 @@
 
     # ====== Hiển thị tiến trình ======
     def spinner_worker():
-        spinner = ["⠋","⠙","⠹","⠸","⠼","⠴","⠦","⠧","⠇","⠏"]
+        spinner = ["⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏"]
         idx = 0
         while not stop_spinner:
             with bytes_scanned_lock:
@@ -44,7 +62,10 @@
             bar_len = 30
             filled = int(bar_len * pct / 100)
             bar = "█" * filled + "░" * (bar_len - filled)
-            print(f"\r{xanhduong_sang}{spinner[idx % len(spinner)]}{reset} {trang_sang}[{bar}] {pct:5.1f}% {scanned:,}/{file_size:,} bytes{reset}", end='', flush=True)
+            print(
+                f"\r{xanhduong_sang}{spinner[idx % len(spinner)]}{reset} {trang_sang}[{bar}] {pct:5.1f}% {scanned:,}/{file_size:,} bytes{reset}",
+                end='', flush=True
+            )
             idx += 1
             time.sleep(0.1)
         print("\r" + " " * 120 + "\r", end='', flush=True)
@@ -127,14 +148,12 @@
         print(f"{xanhla}APIScanHTM5 : File kết quả đã lưu:{reset} {xnhac}{out_path}{reset}")
         return
 
-    unique = {}
-    for off, s in found_results:
-        unique[off] = s
+    unique = {off: s for off, s in found_results}
     items = sorted(unique.items(), key=lambda x: x[0])
 
     print(f"\n{xanhduong_sang}APIScanHTM5 :{reset} {trang_sang}Kết quả tìm được ({len(items)}):{reset}")
     print(f"{trang_sang}{'No.':<4} {'Offset(HEX)':<12} {'Offset(DEC)':<12} {'Preview':<80}{reset}")
-    print(f"{xanhduong_sang}{'-'*110}{reset}")
+    print(f"{xanhduong_sang}{'-' * 110}{reset}")
 
     for i, (off, s) in enumerate(items[:MAX_RESULTS], start=1):
         s_clean = s.replace("\n", "\\n").replace("\r", "\\r")
@@ -149,3 +168,8 @@
             fo.write(f"{i:02d}\t0x{off:08x}\t{off}\t{s}\n")
 
     print(f"\n{xanhla}APIScanHTM5 : File Code Scan Đã Được Lưu:{reset} {xnhac}{out_path}{reset}")
+
+
+# ====== Chạy thử ======
+if __name__ == "__main__":
+    APIScanHTM5()
