@@ -35,12 +35,12 @@ YOUTUBE : APIDevThienNhan
        
         while(p>1):
             p=p-1
-            print(f'\033[0;34m[🌸DUYKHANH🌸]\033[1;32m[|][LO......][{p}]','     ',end='\r');sleep(1/6)
-            print(f'\033[0;34m[🌸DUYKHANH🌸]\033[1;32m[/][LOA.....][{p}]','     ',end='\r');sleep(1/6)
-            print(f'\033[0;34m[🌸DUYKHANH🌸]\033[1;32m[-][LOAD....][{p}]','     ',end='\r');sleep(1/6)
-            print(f'\033[0;34m[🌸DUYKHANH🌸]\033[1;32m[+][LOADI...][{p}]','     ',end='\r');sleep(1/6)
-            print(f'\033[0;34m[🌸DUYKHANH🌸]\033[1;32m[\][LOADIN..][{p}]','     ',end='\r');sleep(1/6)
-            print(f'\033[0;34m[🌸DUYKHANH🌸]\033[1;32m[|][LOADING.][{p}]','     ',end='\r');sleep(1/6)
+            print(f'\033[0;34m[APIDev]\033[1;32m[|][LO......][{p}]','     ',end='\r');sleep(1/6)
+            print(f'\033[0;34m[APIDev]\033[1;32m[/][LOA.....][{p}]','     ',end='\r');sleep(1/6)
+            print(f'\033[0;34m[APIDev]\033[1;32m[-][LOAD....][{p}]','     ',end='\r');sleep(1/6)
+            print(f'\033[0;34m[APIDev]\033[1;32m[+][LOADI...][{p}]','     ',end='\r');sleep(1/6)
+            print(f'\033[0;34m[APIDev]\033[1;32m[\][LOADIN..][{p}]','     ',end='\r');sleep(1/6)
+            print(f'\033[0;34m[APIDev]\033[1;32m[|][LOADING.][{p}]','     ',end='\r');sleep(1/6)
     def getthongtinfacebook(self, cookie: str):
         
         headers_get = {'authority': 'www.facebook.com','accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9','accept-language': 'vi-VN,vi;q=0.9,fr-FR;q=0.8,fr;q=0.7,en-US;q=0.6,en;q=0.5','sec-ch-prefers-color-scheme': 'light','sec-ch-ua': '"Not?A_Brand";v="8", "Chromium";v="108", "Google Chrome";v="108"','sec-ch-ua-mobile': '?0','sec-ch-ua-platform': '"Windows"','sec-fetch-dest': 'document','sec-fetch-mode': 'navigate','sec-fetch-site': 'none','sec-fetch-user': '?1','upgrade-insecure-requests': '1','user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36','viewport-width': '1184','cookie': cookie}
@@ -142,4 +142,5 @@ while True:
         dpcutevcl.ndp_delay_tool(delay)
         if dem == slpage:
             input(f'\033[1;35mDone {dem}, Page </> ENTER ĐỂ EXIT')
+
             exit()
