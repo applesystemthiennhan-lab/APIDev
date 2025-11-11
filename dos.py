@@ -1,23 +1,34 @@
-import os
+import os
 
-import threading
 
-import requests
+import threading
 
-import time
 
-from pystyle import Colors, Colorate
+import requests
 
-
 
-def banner():
-
+import time
 
-    os.system('cls' if os.name == 'nt' else 'clear')
 
-    
+from pystyle import Colors, Colorate
 
-    banner_text = """
+
+
+
+
+def banner():
+
+
+
+
+    os.system('cls' if os.name == 'nt' else 'clear')
+
+
+    
+
+
+    banner_text = """
+
 
 ╔══════════════════════════════════════════════════════╗
 ║    DDoS Tool . Version 1.0 | Cre by: APIDev          ║
@@ -30,9 +41,12 @@ def banner():
 ║ ██║  ██║██║     ██║██████╔╝███████╗  ██║                     ║
 ║ ╚═╝  ╚═╝╚═╝     ╚═╝╚═════╝ ╚══════╝  ╚═╝                     ║
 ╠═════════════════════════════════════════════════════════════════╣
-    """
+    """
 
-    
+
+    
+
+
 
     print(Colorate.Diagonal(Colors.blue_to_cyan, banner_text))
 
@@ -327,3 +341,4 @@ for i in range(thread):
 
 for thread in thread_list:
     thread.join()
+
